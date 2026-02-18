@@ -9,13 +9,16 @@ try:
 except socket.gaierror:
     ip = host
     print(f"Using IP directly: {ip}")
-else:
-    ip=host
+
 print(f"Port  | status | Service")
 for i in range(start_port,stop_port+1):
     scan_socket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     scan_socket.settimeout(1)
-    result=scan_socket.connect_ex((ip,i))
+    try:
+        result=scan_socket.connect_ex((ip,i))
+    except socket.gaierror:
+        print("Enter correct domain name")
+        break
     try:
         service = socket.getservbyport(i)
     except OSError:
