@@ -1,0 +1,4 @@
+rockyou.txt
+venv/
+__pycache__/
+*.pyc
