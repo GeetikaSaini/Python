@@ -1,11 +1,9 @@
 import socket
-
-
 def wordlist(filepath):
     with open(filepath,'r') as f:
         for i in f:
             word=i.strip().lower()
-            yield word
+            yield word  #solve buffer problem
 
 
 def check_domain(subdomain):

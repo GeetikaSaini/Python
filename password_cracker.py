@@ -6,10 +6,15 @@ def typeofhash(hash):
         return 'MD5'
     else:
         return 'SHA1' #160
+    
+
 def lengthofhash(hash):
     len_hash=len(hash)*4
     hashtype=typeofhash(len_hash)
     return hashtype
+
+
+
 def conversion(password,hash_type):
     if(hash_type=='SHA256'):
         hash_value=hashlib.SHA256(str.encode(password)).hexdigest()
@@ -21,6 +26,8 @@ def conversion(password,hash_type):
         hash_value=hashlib.sha1(str.encode(password)).hexdigest()
         return hash_value
     
+
+    
 def main():
     get_hash=input("Enter the hash for which u want to get password: ")
     hash_type=lengthofhash(get_hash)
@@ -31,6 +38,8 @@ def main():
             if(data_hash==get_hash):
                 print(f'Password is {data}')
                 break
+
+            
 if __name__ =="__main__":
     main()
 
